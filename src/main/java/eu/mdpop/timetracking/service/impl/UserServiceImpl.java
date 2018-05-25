@@ -30,18 +30,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(Long id, UserEntity user) {
-        if (getUser(id) == null) {
-            throw new RuntimeException("USER NOT FOUND");
-        }
+        getUser(id);
         user.setId(id);
         create(user);
     }
 
     @Override
     public void deleteUser(Long id) {
-        if (getUser(id) == null) {
-            throw new RuntimeException("USER NOT FOUND");
-        }
         userRepository.deleteById(id);
     }
 

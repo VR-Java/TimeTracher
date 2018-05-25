@@ -30,18 +30,13 @@ public class RecordingSheetServiceImpl implements RecordingSheetService {
 
     @Override
     public void update(Long id, RecordingSheetEntity recordingSheet) {
-        if (getRecordingSheet(id) == null) {
-            throw new RuntimeException("Recording sheet not found");
-        }
+        getRecordingSheet(id);
         recordingSheet.setId(id);
         create(recordingSheet);
     }
 
     @Override
     public void delete(Long id) {
-        if (getRecordingSheet(id) == null) {
-            throw new RuntimeException("Recording sheet not found");
-        }
         recordingSheetRepository.deleteById(id);
     }
 
